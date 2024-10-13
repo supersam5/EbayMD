@@ -13,7 +13,9 @@ async function getAccessToken() {
             clientSecret: clientSecret,
             redirectUri: ''
         });
-        return ebayAuthToken;
+        const token = await ebayAuthToken.getApplicationToken('PRODUCTION');
+        console.log("Access Token: "+ JSON.stringify(token))
+        return token;
     } catch (error) {
         console.error('Error getting access token:', error.response.data);
     }
@@ -40,6 +42,6 @@ async function getAccessToken() {
     } catch (error) {
         console.error('Error getting access token:', error.response.data);
     }*/
-}
+
 
 module.exports = getAccessToken;
